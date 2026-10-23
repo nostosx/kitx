@@ -1,0 +1,37 @@
+version: "2"
+
+run:
+  go: "1.27.3"
+
+linters:
+  default: standard
+  enable:
+    - depguard
+    - errorlint
+    - gocritic
+    - misspell
+    - modernize
+    - nolintlint
+    - revive
+    - unconvert
+    - unparam
+  settings:
+    depguard:
+      rules:
+        stdlib-only:
+          list-mode: strict
+          allow:
+            - $gostd
+            - github.com/nostosx/kitx
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/nostosx
