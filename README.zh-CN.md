@@ -7,8 +7,7 @@ kitx 是一组独立的 Go 工具包，提供重试、并发控制、缓存和 I
 
 ## 安装
 
-需要 **Go 1.27.3 或更高版本**。首个版本 **v1.0.0** 正在准备中。
-发布后，在应用模块中安装：
+需要 **Go 1.27.3 或更高版本**。在应用模块中安装 v1.0.0：
 
 ```sh
 go get github.com/nostosx/kitx@v1.0.0
@@ -128,7 +127,7 @@ make lint
 make vulncheck
 ```
 
-[变更记录](CHANGELOG.md) · [发布指南](RELEASING.md) · [安全策略](SECURITY.md)
+[发布说明](RELEASE_NOTES.md#简体中文) · [变更记录](CHANGELOG.md) · [发布指南](RELEASING.md) · [安全策略](SECURITY.md)
 
 ## 许可证
 

@@ -3,10 +3,10 @@
 User-visible changes to [kitx](https://github.com/nostosx/kitx).
 Module versions follow semantic versioning.
 
-## v1.0.0
+## v1.0.0 - 2026-10-23
 
-Initial stable release, in preparation. Requires Go 1.27.3 or later; all
-packages use only the standard library.
+Initial stable release. Requires Go 1.27.3 or later. Code and tests depend only
+on the standard library. All 15 packages share one module version.
 
 ### Added
 

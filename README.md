@@ -8,8 +8,7 @@ Code and tests depend only on the standard library.
 
 ## Installation
 
-Requires **Go 1.27.3 or later**. The first release, **v1.0.0**, is in preparation.
-Once published, install it from your application module:
+Requires **Go 1.27.3 or later**. Install v1.0.0 from your application module:
 
 ```sh
 go get github.com/nostosx/kitx@v1.0.0
@@ -139,7 +138,7 @@ make lint
 make vulncheck
 ```
 
-[Changelog](CHANGELOG.md) · [Release guide](RELEASING.md) · [Security policy](SECURITY.md)
+[Release notes](RELEASE_NOTES.md) · [Changelog](CHANGELOG.md) · [Release guide](RELEASING.md) · [Security policy](SECURITY.md)
 
 ## License
 

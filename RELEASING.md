@@ -26,10 +26,13 @@ of the module release version.
    compatibility impact.
 2. Finalize the corresponding section in [CHANGELOG.md](CHANGELOG.md). For later
    releases, move entries from `Unreleased` into the versioned section. Add the
-   planned publication date when finalizing the candidate. Use this section as
-   the GitHub release notes.
-3. Update the release status and installation version in both READMEs. Verify
-   their examples against the API and include `LICENSE` in the source archive.
+   planned publication date when finalizing the candidate. For v1.0.0, use
+   [RELEASE_NOTES.md](RELEASE_NOTES.md) as the GitHub release description.
+   Keep its English and Chinese sections aligned with the changelog.
+3. Update the installation version in both READMEs and verify their examples
+   against the API. Include `LICENSE` in the source archive. If publication
+   moves to another day, update the changelog date before validating the final
+   candidate.
 4. With Go 1.27.3 and the tools from [CONTRIBUTING.md](CONTRIBUTING.md), run:
 
    ```sh
@@ -56,7 +59,8 @@ git push origin refs/tags/v1.0.0
 ```
 
 Create a [GitHub release](https://github.com/nostosx/kitx/releases/new) using the
-existing tag and its changelog section. Check the tag's commit before publishing.
+existing tag. Use the title `kitx v1.0.0` and the finalized release notes for
+the description. Check the tag's commit before publishing.
 The release is a source module; no binary build or Go module upload is required.
 
 Do not move or replace a published tag. A correction to released code needs a
