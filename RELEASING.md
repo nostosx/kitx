@@ -36,9 +36,9 @@ of the module release version.
 4. With Go 1.27.3 and the tools from [CONTRIBUTING.md](CONTRIBUTING.md), run:
 
    ```sh
-   make check
-   make lint
-   make vulncheck
+   task check
+   task lint
+   task vulncheck
    ```
 
 5. Review the final diff and record the candidate commit. Publish the candidate

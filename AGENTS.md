@@ -11,10 +11,13 @@ editing; CI is .github/workflows/ci.yml.
   cancellation, concurrency and ownership where relevant.
 - Keep application adapters and policies outside the library. Preserve each
   package's cancellation, persistence and algorithm contracts during reuse.
-- `make check`: formatting, modernizers, tidy diff, vet, build, dependency checks
-  and randomized race tests. `make lint`: golangci-lint v2.15.0;
-  `make vulncheck`: govulncheck. `make test` is ordinary testing; `make race`
-  runs the race suite. `make fmt`, `make fix` and `make tidy` modify files.
+- `task check`: formatting, modernizers, tidy diff, vet, build, dependency checks
+  and randomized race tests. `task lint`: golangci-lint v2.15.0;
+  `task vulncheck`: govulncheck. `task test` is ordinary testing;
+  `task test RACE=true` enables race, and `task test COVER=true` enables race
+  and coverage. Public commands are check/test/build/lint/vulncheck/fmt/fix/tidy;
+  bare `task` selects check, and quality substeps are internal.
+  `task fmt`, `task fix` and `task tidy` modify files.
   CI jobs are independent; manual release verification is in RELEASING.md.
 - Use synctest and explicit barriers for concurrency tests; do not add wall-clock
   sleeps or third-party test dependencies. Keep executable public API examples.

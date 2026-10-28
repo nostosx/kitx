@@ -3,6 +3,12 @@
 User-visible changes to [kitx](https://github.com/nostosx/kitx).
 Module versions follow semantic versioning.
 
+## Unreleased
+
+- Development tooling: replace Make entry points with Task v3.53.1 in local
+  checks, CI and contribution/release instructions. Use `task check`, `task lint`
+  and `task vulncheck`; check coverage, build tags and failure gates are preserved.
+
 ## v1.0.0 - 2026-10-23
 
 Initial stable release. Requires Go 1.27.3 or later. Code and tests depend only

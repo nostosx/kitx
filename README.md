@@ -133,10 +133,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, design criteria, and pull
 requests. Run the following checks before submitting a change:
 
 ```sh
-make check
-make lint
-make vulncheck
+task check
+task lint
+task vulncheck
 ```
+
+The public commands are `check`, `test`, `build`, `lint`, `vulncheck`, `fmt`,
+`fix` and `tidy`; `task` defaults to `check`. Use `task test RACE=true` for
+race tests or `task test COVER=true` for race tests with function coverage.
+`task --list` and `task --list-all` show only these eight entry points.
 
 [Release notes](RELEASE_NOTES.md) · [Changelog](CHANGELOG.md) · [Release guide](RELEASING.md) · [Security policy](SECURITY.md)
 

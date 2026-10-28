@@ -4,10 +4,21 @@ Bug reports, documentation improvements, and focused code changes are welcome.
 For vulnerabilities, follow the [security policy](SECURITY.md) instead of
 posting details in a public issue.
 
+Install [Task](https://taskfile.dev/docs/installation/) v3.53.1 outside the module,
+matching CI, and put its binary on `PATH`:
+
+```sh
+go install github.com/go-task/task/v3/cmd/task@v3.53.1
+```
+
+Run `task --list` to discover tasks. Tool overrides accept environment variables or
+Task arguments, for example `task check GO="/path with spaces/go"`.
+Checks force `GOWORK=off`; `check`, `lint` and `vulncheck` do not apply source fixes.
+
 ## Set up a checkout
 
-Install Go 1.27.3 or later, Git, and GNU Make with a POSIX shell. On Windows,
-run Make from Git Bash. CI uses Go 1.27.3 on Linux, macOS, and Windows.
+Install Go 1.27.3 or later, Git, and Task v3.53.1 with a POSIX shell. On Windows,
+run Task from Git Bash. CI uses Go 1.27.3 on Linux, macOS, and Windows.
 
 Fork [nostosx/kitx](https://github.com/nostosx/kitx), clone your fork, and enter
 the checkout. To work from the upstream source directly:
@@ -15,7 +26,7 @@ the checkout. To work from the upstream source directly:
 ```sh
 git clone https://github.com/nostosx/kitx.git
 cd "kitx"
-make check
+task check
 ```
 
 Install the pinned lint and vulnerability tools, matching CI. Build the linter
@@ -27,8 +38,8 @@ go install golang.org/x/vuln/cmd/govulncheck@v1.9.0
 ```
 
 Add the installation directory to `PATH`. Alternatively, select executables
-with the Make variables `GO`, `GOFMT`, `GOLANGCI_LINT`, and `GOVULNCHECK`.
-The Makefile sets `GOWORK=off`, so a local workspace cannot supply hidden
+with the Task variables `GO`, `GOFMT`, `GOLANGCI_LINT`, and `GOVULNCHECK`.
+`Taskfile.yml` sets `GOWORK=off`, so a local workspace cannot supply hidden
 dependencies.
 
 ## Run checks
@@ -36,23 +47,28 @@ dependencies.
 Before opening a pull request, run:
 
 ```sh
-make check
-make lint
-make vulncheck
+task check
+task lint
+task vulncheck
 ```
 
 | Command | Purpose |
 | --- | --- |
-| `make check` | Check formatting, modernization, module tidiness, vet, builds, dependency boundaries, and race tests. |
-| `make test` | Run unit tests with shuffled order and disabled result caching. |
-| `make race` | Run the same tests with the race detector. |
-| `make lint` | Run golangci-lint on default and integration-tag builds. |
-| `make vulncheck` | Scan default and integration-tag builds with govulncheck. |
-| `make cover` | Run race tests and write `coverage.out`, then print function coverage. |
+| `task check` | Check formatting, modernization, module tidiness, vet, builds, dependency boundaries, and race tests. |
+| `task test` | Run unit tests with shuffled order and disabled result caching. |
+| `task test RACE=true` | Run the same tests with the race detector. |
+| `task lint` | Run golangci-lint on default and integration-tag builds. |
+| `task vulncheck` | Scan default and integration-tag builds with govulncheck. |
+| `task test COVER=true` | Run race tests and write `coverage.out`, then print function coverage. |
 
-`make check` does not apply formatting or source fixes. Use `make fmt`,
-`make fix`, or `make tidy` to apply the corresponding changes, then review
-the diff. `make help` lists the main entry points.
+`task check` does not apply formatting or source fixes. Use `task fmt`,
+`task fix`, or `task tidy` to apply the corresponding changes, then review
+the diff. `task --list` lists the main entry points.
+
+The eight public commands are `check`, `test`, `build`, `lint`, `vulncheck`,
+`fmt`, `fix` and `tidy`. Running `task` selects `check`. `RACE` and `COVER`
+accept only `true` or `false`; coverage implies race. Quality substeps are
+internal, so `task --list-all` shows the same commands as `task --list`.
 
 For a focused test run during development:
 

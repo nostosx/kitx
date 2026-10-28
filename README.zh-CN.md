@@ -122,10 +122,14 @@ func ReadWithRetry(
 提交变更前运行：
 
 ```sh
-make check
-make lint
-make vulncheck
+task check
+task lint
+task vulncheck
 ```
+
+公开入口只有 `check`、`test`、`build`、`lint`、`vulncheck`、`fmt`、`fix`、`tidy`；
+裸 `task` 默认执行 `check`。用 `task test RACE=true` 开启 race，用 `task test COVER=true`
+运行 race 并打印函数覆盖率。`task --list` 与 `task --list-all` 都只显示这八项。
 
 [发布说明](RELEASE_NOTES.md#简体中文) · [变更记录](CHANGELOG.md) · [发布指南](RELEASING.md) · [安全策略](SECURITY.md)
 
